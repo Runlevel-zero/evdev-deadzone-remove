@@ -13,12 +13,12 @@ device2 = "/dev/input/by-id/usb-VKB-Sim_©_Alex_Oz_2021_VKBsim_Gladiator_EVO_R-e
 device3 = "/dev/input/by-id/usb-VKB-Sim_©_Alex_Oz_2021_VKBsim_T-Rudder-event-joystick"
 
 #Ensure all axis are covered
-axisCount1 = "6"
-axisCount2 = "8"
-axisCount3 = "4"
+axisCount1 = 6
+axisCount2 = 8
+axisCount3 = 4
 
 
-for axis in range(6):
+for axis in range(axisCount1):
     command = ["evdev-joystick", "--evdev", device1, "--axis", str(axis), "--deadzone", "0"]
     # Capture and print output
     process = subprocess.Popen(command, stdout=subprocess.PIPE, universal_newlines=True)
@@ -26,7 +26,7 @@ for axis in range(6):
     for line in process.stdout:
         print(line, end="")
 
-for axis in range(8):
+for axis in range(axisCount2):
     command = ["evdev-joystick", "--evdev", device2, "--axis", str(axis), "--deadzone", "0"]
     # Capture  output
     process = subprocess.Popen(command, stdout=subprocess.PIPE, universal_newlines=True)
@@ -34,7 +34,7 @@ for axis in range(8):
     for line in process.stdout:
         print(line, end="")
 
-for axis in range(4):
+for axis in range(axisCount3):
     command = ["evdev-joystick", "--evdev", device3, "--axis", str(axis), "--deadzone", "0"]
     # Capture and print output
     process = subprocess.Popen(command, stdout=subprocess.PIPE, universal_newlines=True)
